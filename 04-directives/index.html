@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="application">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AngularJS - Direktiven</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
+        <link rel="stylesheet" href="app.css"/>
+    </head>
+    <body ng-cloak>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <span class="navbar-brand">AngularJS - Getting Started</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="page-header">
+                <h2>Direktiven</h2>
+            </div>
+
+            <div ng-controller="DirectiveCtrl">
+                <!-- type: panel-info, panel-success, panel-warning -->
+                <x-directive-attributes type="panel-info"></x-directive-attributes>
+
+                <x-directive-behaviour type="panel-default" alter-type="panel-success"></x-directive-behaviour>
+
+                <x-directive-data is-visible="isVisible"></x-directive-data>
+
+                <button class="btn btn-primary" ng-show="!isVisible" ng-click="setVisible(true)">Wieder einblenden</button>
+            </div>
+        </div>
+
+        <!-- Vendor JS -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/angular/angular.js"></script>
+        <!-- Application's JS -->
+        <script src="app.js"></script>
+    </body>
+</html>

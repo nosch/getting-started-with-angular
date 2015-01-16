@@ -1,0 +1,12 @@
+{
+  "name": "getting-started-with-angular",
+  "version": "0.0.1",
+  "authors": [
+    "nosch <norbert.schmidt@mayflower.de>"
+  ],
+  "dependencies": {
+    "bootstrap": "latest",
+    "angular": "1.2.28",
+    "angular-route": "1.2.28"
+  }
+}

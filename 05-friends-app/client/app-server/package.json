@@ -1,0 +1,14 @@
+{
+    "name": "app-server",
+    "version": "0.1.0",
+    "author": "Norbert Schmidt (nosch)",
+    "description": "Simple application server + proxy for the task-center",
+    "engines": {
+        "node": ">= 0.10.22"
+    },
+    "dependencies": {
+        "express": "3.4.7",
+        "proxy-middleware": "latest"
+    },
+    "devDependencies": {}
+}

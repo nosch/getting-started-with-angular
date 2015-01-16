@@ -1,0 +1,30 @@
+<div class="page-header">
+    <h2>Friends list</h2>
+</div>
+
+<form class="form-inline pull-left">
+    <div class="form-group">
+        <input ng-model="query" type="text" class="form-control" placeholder="Search...">
+    </div>
+</form>
+
+<a ui-sref="friends.create" class="btn btn-primary pull-right">Add Friend</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="friend in list.data | filter:query" ng-click="select(friend)">
+            <td>{{friend.id}}</td>
+            <td>{{friend.name}}</td>
+            <td>{{friend.city}}</td>
+            <td>{{friend.age}}</td>
+        </tr>
+    </tbody>
+</table>

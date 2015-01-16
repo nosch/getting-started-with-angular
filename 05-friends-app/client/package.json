@@ -1,0 +1,20 @@
+{
+  "name": "friends-app-client",
+  "version": "0.0.1",
+  "author": "Norbert Schmidt (nosch)",
+  "homepage": "http://github.com/nosch",
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.12"
+  },
+  "devDependencies": {
+    "bower": "latest"
+  },
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install"
+  }
+}
