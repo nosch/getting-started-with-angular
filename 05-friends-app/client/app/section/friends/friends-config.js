@@ -19,7 +19,14 @@ angular.module('friends.config', [
             .state('friends.list', {
                 url: '',
                 templateUrl: 'app/section/friends/view/list.tpl.html',
-                controller: 'ListCtrl'
+                controller: 'ListCtrl',
+                resolve: {
+                    friends: function (friendsService) {
+                        return friendsService.getAll(function (result) {
+                            return result;
+                        })
+                    }
+                }
             })
 
             .state('friends.create', {

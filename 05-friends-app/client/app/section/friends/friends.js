@@ -6,20 +6,16 @@ angular.module('friends', [
         'friends.config'
     ])
 
-    .controller('ListCtrl', function ($scope, friendsService, $state) {
+    .controller('ListCtrl', function ($scope, friends, $state) {
         'use strict';
 
         $scope.list = {
-            data: []
-        }
+            data: friends.data
+        };
 
         $scope.select = function (friend) {
             $state.go('friends.update', {id: friend.id});
         };
-
-        friendsService.getAll(function (data) {
-            $scope.list.data = data;
-        });
     })
 
     .controller('FormCtrl', function ($scope, friend, friendsService, $state) {
@@ -32,26 +28,30 @@ angular.module('friends', [
         $scope.heading = (!$scope.friend.id) ? 'New Friend' : 'Edit Friend';
 
         $scope.save = function () {
-            if ($scope.friend.id) {
-                friendsService.update($scope.friend.id, $scope.friend, function (data) {
-
-                    console.log(data);
-
-                    $state.go('friends.list');
-                })
-            } else {
-                friendsService.add($scope.friend, function (data) {
-
-                    console.log(data);
-
-                    $state.go('friends.list');
-                })
+            if ($scope.friend.name !== '' && $scope.friend.age !== '') {
+                if ($scope.friend.id) {
+                    friendsService.update($scope.friend.id, $scope.friend, function (data) {
+                        $state.go('friends.list');
+                    })
+                } else {
+                    friendsService.add($scope.friend, function (data) {
+                        $state.go('friends.list');
+                    })
+                }
             }
-        }
+        };
 
-        $scope.reset = function () {
+        $scope.remove = function (friend) {
+            if (confirm('Remove "' + friend.name + '" from list?')) {
+                friendsService.remove(friend.id, function (data) {
+                    $state.go('friends.list');
+                });
+            }
+        };
+
+        $scope.cancel = function () {
             angular.copy(friendCopy, $scope.friend);
 
             $state.go('friends.list');
         };
-    })
+    });

@@ -6,12 +6,6 @@ angular.module('service.friends', [])
     .factory('friendsService', function($http) {
         'use strict';
 
-        var add = function (friend, successCb, errorCb) {
-            return $http.post('/api/friends', friend)
-                .success(successCb)
-                .error(errorCb || angular.noop);
-        };
-
         var getAll = function (successCb, errorCb) {
             return $http.get('/api/friends')
                 .success(successCb)
@@ -20,6 +14,12 @@ angular.module('service.friends', [])
 
         var getOne = function (id, successCb, errorCb) {
             return $http.get('/api/friends/' + id)
+                .success(successCb)
+                .error(errorCb || angular.noop);
+        };
+
+        var add = function (friend, successCb, errorCb) {
+            return $http.post('/api/friends', friend)
                 .success(successCb)
                 .error(errorCb || angular.noop);
         };
